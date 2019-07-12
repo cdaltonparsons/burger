@@ -13,23 +13,25 @@ function printQuestionMarks(num) {
 // Helper function to convert object key/value pairs into SQL syntax
 function objToSql(ob) {
     var arr = [];
-
-    //loop through the keys and push the key/value as a string into arr
+  
+    // loop through the keys and push the key/value as a string int arr
     for (var key in ob) {
-        var value = ob[key];
-        //check to skip hidden properties
-        if (Object.hasOwnProperty.call(ob, key)) {
-            // if the string contains spaces, add quotations (Buffalo Blue Cheese Burger => 'Buffalo Blue Cheese Burger')
-            if(typeof value === "string" && value.indexOf(" ") >= 0) {
-                value = "'" + value + "'";
-            
-            arr.push(key + "=" + value);
-        };
-    };
-    
+      var value = ob[key];
+      // check to skip hidden properties
+      if (Object.hasOwnProperty.call(ob, key)) {
+        // if string with spaces, add quotations (Lana Del Grey => 'Lana Del Grey')
+        if (typeof value === "string" && value.indexOf(" ") >= 0) {
+          value = "'" + value + "'";
+        }
+        // e.g. {name: 'Lana Del Grey'} => ["name='Lana Del Grey'"]
+        // e.g. {sleepy: true} => ["sleepy=true"]
+        arr.push(key + "=" + value);
+      }
+    }
+  
+    // translate array of strings to a single comma-separated string
     return arr.toString();
-};
-};
+  }
 
 // ORM object for all SQL queries
 var orm = {
@@ -64,7 +66,7 @@ var orm = {
         queryString += " WHERE ";
         queryString += condition;
 
-        console.log(queryString);
+        console.log(queryString + "orm line 67");
         connection.query(queryString, function(err, result){
             if(err) throw err;
             cb(result);

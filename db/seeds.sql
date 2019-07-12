@@ -1,2 +1,2 @@
-INSERT INTO burgers (name)
-VALUES ("Cowboy"), ("Bacon Bleu"), ("Royale with cheese"), ("Wagyu Beef sliders")
+INSERT INTO burgers (name, devoured)
+VALUES ("Cowboy", false), ("Bacon Bleu", false), ("Royale with cheese", false), ("Wagyu Beef sliders", false)

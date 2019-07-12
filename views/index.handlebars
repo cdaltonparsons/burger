@@ -7,22 +7,31 @@
     </div>
     <button type="submit">Add Burger!</button>
 </form>
+<br>
+<br>
 
 <div class="row">
     <div class="col-md-6">
+        <h2>Burgers yet to be enjoyed!</h2>
         <ul>
             {{#each burgers}}
                 {{#unless devoured}}
-                    {{> burgers/burger-block devoured=true}}
+                <li>
+                    <p>{{id}}.  {{name}} <button class="change-devoured" data-id="{{id}}" data-newdevoured="{{devoured}}"> DEVOUR!
+	</button> </p>
+                    </li>
                 {{/unless}}
             {{/each}}
         </ul>
     </div>
     <div class="col-md-6">
+        <h2>Wall of Remeberance (Burgers you already ate)</h2>
         <ul>
             {{#each burgers}}
                 {{#if devoured}}
-                    {{> burgers/burger-block devoured=false}}
+                    <li>
+                    <p>{{id}}.  {{name}} </p>
+                    </li>
                 {{/if}}
             {{/each}}
         </ul>
